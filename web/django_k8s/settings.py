@@ -93,8 +93,8 @@ DB_IS_AVIALABLE = all([
   DB_PORT,
 ])
 
-POSTGRES_READY=str(os.environ.get("POSTGRES_READY")) == "1"
-if DB_IS_AVIALABLE and POSTGRES_READY:
+
+if DB_IS_AVIALABLE:
   DATABASES = {
       "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -106,7 +106,8 @@ if DB_IS_AVIALABLE and POSTGRES_READY:
       }
     }
   
-print(DATABASES)
+
+  
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
