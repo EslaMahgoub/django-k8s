@@ -15,7 +15,7 @@ spec:
         app: django-k8s-web-deployment
     spec:
       containers:
-      - name: django-k8s
+      - name: django-k8s-web
         image: registry.digitalocean.com/eslamahgoub-k8s/django-k8s-web:latest
         imagePullPolicy: Always
         envFrom:
