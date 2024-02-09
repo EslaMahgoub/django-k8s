@@ -1,0 +1,21 @@
+name: Build Docker Container & Push To Registry
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test_django_job:
+    uses: EslaMahgoub/django-k8s/.github/workflows/test-django.yaml@main
+  docker_build:
+    runs-on: ubuntu-latest
+    needs: [test_django_job]
+    env:
+      DJANGO_SECRET_KEY: test-secret-key-can-be-changed
+
+    steps:
+    - uses: actions/checkout@v3
